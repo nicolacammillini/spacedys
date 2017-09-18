@@ -59,11 +59,10 @@ def test_deck_thirteen_spades():
 
 def test_shuffled_deck():
     """Check deck is different after shuffle"""
-    deck = get_deck()
-    sorted_deck = deck.copy()
-    shuffle_deck(deck)
+    unsorted_deck = get_deck()
+    sorted_deck = get_deck().shuffle()
 
-    assert deck != sorted_deck
+    assert unsorted_deck != sorted_deck
 
 
 def test_description_ace_o_hearts():

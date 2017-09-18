@@ -54,14 +54,36 @@ _SUITS_DESCRIPTION = {
 }
 
 
+class Deck:
+
+    def __init__(self):
+        self.deck = []
+        for suit in Suit:
+            for value in Value:
+                self.deck.append((value, suit))
+
+    def __len__(self):
+        return len(self.deck)
+
+    def __iter__(self):
+        return self.deck.__iter__()
+
+    def __eq__(self, that):
+        if isinstance(that, Deck):
+            return self.deck == that.deck
+        else:
+          return False
+
+    def __hash__(self):
+        return self.deck.__hash__()
+
+    def shuffle(self):
+        shuffle(self.deck)
+
+
 def get_deck():
     """Creates a sorted deck of cards"""
-    deck = []
-    for suit in Suit:
-        for value in Value:
-            deck.append((value, suit))
-
-    return deck
+    return Deck()
 
 
 def shuffle_deck(deck):
